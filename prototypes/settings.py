@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
+import environ
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -68,6 +70,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'prototypes.wsgi.application'
 
+ENVIRONMENT_BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+env = environ.Env()
+environ.Env.read_env(os.path.join(ENVIRONMENT_BASE_DIR, '.env'))
+
+MISTRAL_API_KEY = env('MISTRAL_API_KEY')
+
+os.environ["MISTRAL_API_KEY"] = MISTRAL_API_KEY
+
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -120,3 +130,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
