@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Emosongi: Too Many Requests</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'emosongi/css/style.css' %}">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div class="mt-10 text-6xl text-center">🤭<div>
+        <h1 class="mt-10 text-red-500 text-5xl text-center">Service tier capacity exceeded for this model.️</h1>
+        <a id="give_emojis_back" href="{% url 'emosongi:index' %}" class="text-3xl decoration-solid">
+            <h3 id="back">
+                Take me home!
+            </h3>
+        </a>
+    </body>
+</html>

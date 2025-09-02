@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Emosongi: Not Found</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'emosongi/css/style.css' %}">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div class="mt-10 text-6xl text-center">🗺️<div>
+        <h1 class="mt-10 text-white text-5xl text-center">Not Found.️</h1>
+        <a id="give_emojis_back" href="{% url 'emosongi:index' %}" class="text-3xl decoration-solid">
+            <h3 id="back">
+                Take me home!
+            </h3>
+        </a>
+    </body>
+</html>
