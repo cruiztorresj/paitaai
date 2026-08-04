@@ -4,12 +4,11 @@ body {
     color: antiquewhite;
 }
 
-.cool {
+fieldset { border-style: none; }
 
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: black;
-  margin: 0;
+legend { 
+
+    font-size: 8vmin;
 }
 
 input[type="radio"]:checked + label {
@@ -32,7 +31,48 @@ input[type="radio"]:checked + label {
 
 #back { margin-top: 2rem; }
 
-.container {
+#heartbox { grid-area: heartbox; }
+
+#party { grid-area: party; }
+
+#smile { grid-area: smile; }
+
+#angry { grid-area: angry; }
+
+#melting { grid-area: melting; }
+
+#yawning { grid-area: yawning; }
+
+#lol { grid-area: lol; }
+
+#pinoccio { grid-area: pinoccio; }
+
+#brokenheart { grid-area: brokenheart; }
+
+#hugging { grid-area: hugging; }
+
+.cool {
+
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: black;
+  margin: 0;
+}
+
+.emojis {
+
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        "heartbox heartbox heartbox"
+        "party smile angry"
+        "melting yawning lol"
+        "pinoccio brokenheart hugging";
+    gap: 0.5em;
+}
+
+.emoji {
+
+    text-align: center;
+    font-size: 13vmin;
 }

@@ -12,69 +12,72 @@
         <main>
              <form id="formEmojis" action="{% url 'emosongi:recommend' %}" method="post" onsubmit="return validateEmojiSelection();">
                 {% csrf_token %}
-                        <fieldset>
-                            <legend>Emosongi</legend>
-                            <div class="container">
+                <fieldset>
+                    <legend>Emosongi</legend>
+                    <div class="emojis">
 
-                                <div class="">
-                                    <input type="radio" id="1" name="my_emotion" value="1" class="cool">
-                                    <label for="1" class="">💝</label>
-                                </div>
+                        <div id="heartbox" class="emoji">
+                            <input type="radio" id="1" name="my_emotion" value="1" class="cool">
+                            <label for="1">💝</label>
+                        </div>
 
-                                <div class="">
-                                    <input type="radio" id="2" name="my_emotion" value="2" class="cool">
-                                    <label for="2" class="">🥳</label>
-                                </div>
+                        <div id="party" class="emoji">
+                            <input type="radio" id="2" name="my_emotion" value="2" class="cool">
+                            <label for="2">🥳</label>
+                        </div>
 
-                                <div class="">
-                                    <input type="radio" id="3" name="my_emotion" value="3" class="cool">
-                                    <label for="3" class="">😊</label>
-                                </div>
+                        <div id="smile" class="emoji">
+                            <input type="radio" id="3" name="my_emotion" value="3" class="cool">
+                            <label for="3">😊</label>
+                        </div>
 
-                                <div class="">
-                                    <input type="radio" id="4" name="my_emotion" value="4" class="cool">
-                                    <label for="4" class="">😡</label>
-                                </div>
+                        <div id="angry" class="emoji">
+                            <input type="radio" id="4" name="my_emotion" value="4" class="cool">
+                            <label for="4">😡</label>
+                        </div>
 
-                                <div class="">
-                                    <input type="radio" id="5" name="my_emotion" value="5" class="cool">
-                                    <label for="5" class="">🫠</label>
-                                </div>
+                        <div id="melting" class="emoji">
+                            <input type="radio" id="5" name="my_emotion" value="5" class="cool">
+                            <label for="5">🫠</label>
+                        </div>
 
-                                <div class="">
-                                    <input type="radio" id="6" name="my_emotion" value="6" class="cool">
-                                    <label for="6" class="">🥱</label>
-                                </div>
+                        <div id="yawning" class="emoji">
+                            <input type="radio" id="6" name="my_emotion" value="6" class="cool">
+                            <label for="6">🥱</label>
+                        </div>
 
-                                <div class="">
-                                    <input type="radio" id="7" name="my_emotion" value="7" class="cool">
-                                    <label for="7" class="">😂</label>
-                                </div>
+                        <div id="lol" class="emoji">
+                            <input type="radio" id="7" name="my_emotion" value="7" class="cool">
+                            <label for="7">😂</label>
+                        </div>
 
-                                <div class="">
-                                    <input type="radio" id="8" name="my_emotion" value="8" class="cool">
-                                    <label for="8" class="">🤥</label>
-                                </div>
+                        <div id="pinoccio" class="emoji">
+                            <input type="radio" id="8" name="my_emotion" value="8" class="cool">
+                            <label for="8">🤥</label>
+                        </div>
 
-                                <div class="">
-                                    <input type="radio" id="9" name="my_emotion" value="9" class="cool">
-                                    <label for="9" class="">💔</label>
-                                </div>
+                        <div id="brokenheart" class="emoji">
+                            <input type="radio" id="9" name="my_emotion" value="9" class="cool">
+                            <label for="9">💔</label>
+                        </div>
 
-                                <div class="">
-                                    <input type="radio" id="10" name="my_emotion" value="10" class="cool">
-                                    <label for="10" class="">🤗</label>
-                                </div>
-                            </div>
-                        </fieldset>
-                  <div class="">
-                      <button id="btnEmosongi" type="submit" form="formEmojis" class="">
-                          Give me a song
-                      </button>
-                  </div>
+                        <div id="hugging" class="emoji">
+                            <input type="radio" id="10" name="my_emotion" value="10" class="cool">
+                            <label for="10">🤗</label>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="">
+                    <button id="btnEmosongi" type="submit" form="formEmojis" class="">
+                        Give me a song
+                    </button>
+                </div>
             </form>
+            <p id="feedback" class=""></p>
+            <div class="">
+                &#128679; Under construction.
+            </div>
         </main>
-        <p id="feedback" class=""></p>
         <script src="{% static 'emosongi/js/magic.js' %}" type="text/javascript"></script>
     </body>
 </html>
