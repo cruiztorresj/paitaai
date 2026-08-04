@@ -8,79 +8,72 @@
         <link rel="stylesheet" href="{% static 'emosongi/css/style.css' %}">        
     </head>
     <body>
-        <div>
-            <div style='font-size:50px;'>Under construction</div>
-            <div style='font-size:100px;'>&#129325;</div>
+        <main>
              <form id="formEmojis" action="{% url 'emosongi:recommend' %}" method="post" onsubmit="return validateEmojiSelection();">
                 {% csrf_token %}
-                <div class="flex flex-col-reverse">
-                    <div>
                         <fieldset>
-                            <legend><h1></h1></legend>
-                            <div class="flex flex-row justify-center flex-wrap" >
+                            <legend>Emosongi</legend>
+                            <div class="container">
 
-                                <div class="mt-5">
+                                <div class="">
                                     <input type="radio" id="1" name="my_emotion" value="1" class="cool">
-                                    <label for="1" class="text-6xl">💝</label>
+                                    <label for="1" class="">💝</label>
                                 </div>
 
-                                <div class="mt-5">
+                                <div class="">
                                     <input type="radio" id="2" name="my_emotion" value="2" class="cool">
-                                    <label for="2" class="text-6xl">🥳</label>
+                                    <label for="2" class="">🥳</label>
                                 </div>
 
-                                <div class="mt-5">
+                                <div class="">
                                     <input type="radio" id="3" name="my_emotion" value="3" class="cool">
-                                    <label for="3" class="text-6xl">😊</label>
+                                    <label for="3" class="">😊</label>
                                 </div>
 
-                                <div class="mt-5">
+                                <div class="">
                                     <input type="radio" id="4" name="my_emotion" value="4" class="cool">
-                                    <label for="4" class="text-6xl">😡</label>
+                                    <label for="4" class="">😡</label>
                                 </div>
 
-                                <div class="mt-5">
+                                <div class="">
                                     <input type="radio" id="5" name="my_emotion" value="5" class="cool">
-                                    <label for="5" class="text-6xl">🫠</label>
+                                    <label for="5" class="">🫠</label>
                                 </div>
 
-                                <div class="mt-5">
+                                <div class="">
                                     <input type="radio" id="6" name="my_emotion" value="6" class="cool">
-                                    <label for="6" class="text-6xl">🥱</label>
+                                    <label for="6" class="">🥱</label>
                                 </div>
 
-                                <div class="mt-5">
+                                <div class="">
                                     <input type="radio" id="7" name="my_emotion" value="7" class="cool">
-                                    <label for="7" class="text-6xl">😂</label>
+                                    <label for="7" class="">😂</label>
                                 </div>
 
-                                <div class="mt-5">
+                                <div class="">
                                     <input type="radio" id="8" name="my_emotion" value="8" class="cool">
-                                    <label for="8" class="text-6xl">🤥</label>
+                                    <label for="8" class="">🤥</label>
                                 </div>
 
-                                <div class="mt-5">
+                                <div class="">
                                     <input type="radio" id="9" name="my_emotion" value="9" class="cool">
-                                    <label for="9" class="text-6xl">💔</label>
+                                    <label for="9" class="">💔</label>
                                 </div>
 
-                                <div class="mt-5">
+                                <div class="">
                                     <input type="radio" id="10" name="my_emotion" value="10" class="cool">
-                                    <label for="10" class="text-6xl">🤗</label>
+                                    <label for="10" class="">🤗</label>
                                 </div>
                             </div>
                         </fieldset>
-                    </div>
-                  <div class="flex justify-center">
-
-                      <button id="btnEmosongi" type="submit" form="formEmojis" class="text-3xl mt-10 bg-indigo-500 hover:bg-fuchsia-500 rounded text-white font-bold px-4">
+                  <div class="">
+                      <button id="btnEmosongi" type="submit" form="formEmojis" class="">
                           Give me a song
                       </button>
                   </div>
-                </div>
             </form>
-        </div>
-        <h5 id="feedback" class="mt-10 font-bold text-white text-3xl text-center"></h5>
+        </main>
+        <p id="feedback" class=""></p>
         <script src="{% static 'emosongi/js/magic.js' %}" type="text/javascript"></script>
     </body>
 </html>

@@ -8,9 +8,7 @@ body {
 
   -webkit-appearance: none;
   appearance: none;
-
-  background-color: #000;
-
+  background-color: black;
   margin: 0;
 }
 
@@ -33,3 +31,8 @@ input[type="radio"]:checked + label {
 }
 
 #back { margin-top: 2rem; }
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
