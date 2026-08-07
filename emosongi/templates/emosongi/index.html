@@ -10,7 +10,7 @@
     </head>
     <body>
         <main>
-             <form id="formEmojis" action="{% url 'emosongi:recommend' %}" method="post" onsubmit="return validateEmojiSelection();">
+             <form id="formEmojis" action="{% url 'emosongi:recommend' %}" method="post">
                 {% csrf_token %}
                 <fieldset>
                     <legend>Emosongi</legend>
@@ -67,13 +67,7 @@
                         </div>
                     </div>
                 </fieldset>
-                <div class="">
-                    <button id="btnEmosongi" type="submit" form="formEmojis" class="">
-                        Give me a song
-                    </button>
-                </div>
             </form>
-            <p id="feedback" class=""></p>
             <div class="">
                 &#128679; Under construction.
             </div>
