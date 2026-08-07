@@ -6,14 +6,18 @@ body {
 
 fieldset { border-style: none; }
 
+input[type="radio"]:checked + label {
+
+    animation-name: emoji-rotation;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+label { display: inline-block; }
+
 legend { 
 
     font-size: 8vmin;
-}
-
-input[type="radio"]:checked + label {
-
-   background-color: ivory;
 }
 
 #recommendation {
@@ -75,4 +79,16 @@ input[type="radio"]:checked + label {
 
     text-align: center;
     font-size: 13vmin;
+}
+
+@keyframes emoji-rotation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
