@@ -10,7 +10,7 @@
     </head>
     <body>
         <main>
-             <form id="formEmojis" action="{% url 'emosongi:recommend' %}" method="post">
+             <form id="formEmojis">
                 {% csrf_token %}
                 <fieldset>
                     <legend>Emosongi</legend>
@@ -78,6 +78,8 @@
                     </div>
                 </fieldset>
             </form>
+            <dialog id="recommendation">
+            </dialog>
             <div class="">
                 &#128679; Under construction.
             </div>
