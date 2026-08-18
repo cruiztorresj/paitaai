@@ -10,7 +10,7 @@
     </head>
     <body>
         <main>
-             <form id="formEmojis">
+             <form id="formEmojis" onreset="cleanEmosongi()">
                 {% csrf_token %}
                 <fieldset>
                     <legend id="emosongi-fieldset-legend">Emosongi</legend>
@@ -78,10 +78,19 @@
                     </div>
                 </fieldset>
             </form>
-            <dialog id="recommendation">
-                <p class="music-recommendation" id="singASong"></p>
-                <p class="music-recommendation" id="artist"></p>
-<button commandfor="recommendation" command="close" autofocus>Close</button>
+            <dialog id="recommendation-dialog" class="base-dialog">
+                <p class="music-recommendation-text" id="sing-a-song"></p>
+                <p class="music-recommendation-text" id="artist"></p>
+                <button commandfor="recommendation-dialog" command="close" autofocus>
+                    Close
+                </button>
+            </dialog>
+            <dialog id="error-dialog" class="base-dialog">
+                <p class="error-text" id="error-emoji"></p>
+                <p class="error-text" id="error-message"></p>
+                <button commandfor="error-dialog" command="close" autofocus>
+                    Close
+                </button>
             </dialog>
             <div class="">
                 &#128679; Under construction.
