@@ -24,6 +24,10 @@ legend {
 
     text-align: center;
     margin-top: 5rem;
+    background-color: lightslategray;
+    color: antiquewhite;
+    font-weight: bolder;
+    font-size: x-large;
 }
 
 #give_emojis_back {
@@ -55,7 +59,7 @@ legend {
 
 #hugging { grid-area: hugging; }
 
-.cool {
+.emoji-radio {
 
   -webkit-appearance: none;
   appearance: none;
@@ -82,6 +86,13 @@ legend {
     font-size: 13vmin;
 }
 
+.music-recommendation {
+
+    background-image: linear-gradient(mintcream, orange);
+    color: transparent;
+    background-clip: text;
+}
+
 @keyframes emoji-pulse {
   0% {
     transform: scale(1);
@@ -92,4 +103,9 @@ legend {
   100% {
     transform: scale(1);
   }
+}
+
+#recommendation::backdrop {
+
+    background-image: radial-gradient(circle at 50% 20%, aqua, slategray, darkslategray, black 50%);
 }
