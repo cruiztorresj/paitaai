@@ -20,23 +20,6 @@ legend {
     font-size: 8vmin;
 }
 
-#recommendation {
-
-    text-align: center;
-    margin-top: 5rem;
-    background-color: lightslategray;
-    color: antiquewhite;
-    font-weight: bolder;
-    font-size: x-large;
-}
-
-#give_emojis_back {
-
-    text-align: center;
-    color: yellow;
-    text-decoration: underline;
-}
-
 #back { margin-top: 2rem; }
 
 #heartbox { grid-area: heartbox; }
@@ -58,6 +41,16 @@ legend {
 #brokenheart { grid-area: brokenheart; }
 
 #hugging { grid-area: hugging; }
+
+.base-dialog {
+
+    text-align: center;
+    margin-top: 5rem;
+    background-color: lightslategray;
+    color: antiquewhite;
+    font-weight: bolder;
+    font-size: x-large;
+}
 
 .emoji-radio {
 
@@ -93,7 +86,7 @@ legend {
     animation-iteration-count: infinite;
 }
 
-.music-recommendation {
+.music-recommendation-text {
 
     background-image: linear-gradient(mintcream, orange);
     color: transparent;
@@ -134,7 +127,12 @@ legend {
     100% { background-image: linear-gradient(to bottom, aqua, black 100%); }
 }
 
-#recommendation::backdrop {
+#recommendation-dialog::backdrop {
 
     background-image: radial-gradient(circle at 50% 20%, aqua, slategray, darkslategray, black 50%);
+}
+
+#error-dialog::backdrop {
+
+    background-image: radial-gradient(circle at 50% 20%, red, darkslategray, crimson, black 50%);
 }
