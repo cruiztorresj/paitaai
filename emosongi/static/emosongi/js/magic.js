@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function emosongiApp() {
 
         if(isNewEmosongiRequest) {
 
+            giveUserLoadingVisualClue();
             isNewEmosongiRequest = false;
             controller = new AbortController();
 
@@ -35,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function emosongiApp() {
                 signal: controller.signal
             });
 
-            
             fetch(request).then(function processResponse(response) {
 
                 if(response.ok) {
@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function emosongiApp() {
                     } else {
 
                         console.log('Error');
+                        // TODO REMOVE this log
                         console.log(error);
                     }
             });
@@ -85,8 +86,14 @@ document.addEventListener('DOMContentLoaded', function emosongiApp() {
         } else {
 
             controller.abort();
+            emosongiLegend.innerText = 'Emosongi';
+            emosongiLegend.classList.remove('emosongi-fieldset-legend-loading');
             isNewEmosongiRequest = true;
-            emosongi.call(this, event);
+
+            setTimeout(() => {
+                emosongi.call(this, event);
+            }, 150);
+
             event.preventDefault();
         }
 
@@ -95,14 +102,25 @@ document.addEventListener('DOMContentLoaded', function emosongiApp() {
 
     function submitForm(event) {
 
-        giveUserLoadingVisualClue();
         formEmojis.requestSubmit();
     }
 
     function giveUserLoadingVisualClue() {
 
         emosongiLegend.innerText = 'Loading...';
-        emosongiLegend.classList.toggle('emosongi-fieldset-legend-loading');
+        emosongiLegend.classList.add('emosongi-fieldset-legend-loading');
+    }
+
+    function cleanEmosongi() {
+
+        emosongiLegend.innerText = 'Emosongi';
+        emosongiLegend.classList.remove('emosongi-fieldset-legend-loading');
+        formEmojis.reset();
+    }
+
+    function resetEmosongiForm() {
+
+        formEmojis.reset();
     }
 
     emojis.forEach(function addInteraction(emoji) {
@@ -111,12 +129,8 @@ document.addEventListener('DOMContentLoaded', function emosongiApp() {
 
     });
 
-    function cleanEmosongi() {
-
-        emosongiLegend.innerText = 'Emosongi';
-        emosongiLegend.classList.toggle('emosongi-fieldset-legend-loading');
-        formEmojis.reset();
-    }
-
     formEmojis.addEventListener('submit', emosongi);
+
+    recommendationDialog.addEventListener('close', cleanEmosongi);
+
 });

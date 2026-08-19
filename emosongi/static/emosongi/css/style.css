@@ -8,17 +8,14 @@ fieldset { border-style: none; }
 
 label:has(input[type="radio"]:checked) {
 
-    animation-name: emoji-pulse;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
+    animation-name: emoji-pulse, label-background-fade-out;
+    animation-duration: 1s, 0.5s;
+    animation-iteration-count: infinite, 1;
 }
 
 label { display: inline-block; }
 
-legend { 
-
-    font-size: 8vmin;
-}
+legend { font-size: 8vmin; }
 
 #back { margin-top: 2rem; }
 
@@ -50,6 +47,16 @@ legend {
     color: antiquewhite;
     font-weight: bolder;
     font-size: x-large;
+}
+
+#recommendation-dialog::backdrop {
+
+    background-image: radial-gradient(circle at 50% 20%, aqua, slategray, darkslategray, black 50%);
+}
+
+#error-dialog::backdrop {
+
+    background-image: radial-gradient(circle at 50% 20%, red, darkslategray, crimson, black 50%);
 }
 
 .emoji-radio {
@@ -127,12 +134,9 @@ legend {
     100% { background-image: linear-gradient(to bottom, aqua, black 100%); }
 }
 
-#recommendation-dialog::backdrop {
-
-    background-image: radial-gradient(circle at 50% 20%, aqua, slategray, darkslategray, black 50%);
-}
-
-#error-dialog::backdrop {
-
-    background-image: radial-gradient(circle at 50% 20%, red, darkslategray, crimson, black 50%);
+@keyframes label-background-fade-out {
+  
+    0% { background-color: ivory; }
+  
+    100% { background-color: black; }
 }
