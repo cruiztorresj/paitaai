@@ -55,23 +55,23 @@ document.addEventListener('DOMContentLoaded', function emosongiApp() {
 
                     switch(response.status) {
                         case 401:
-                            song.innerText = String.fromCodePoint('128683');
+                            extraInfo.innerText = String.fromCodePoint('128683');
                             artist.innerText = 'UNAUTHORIZED';
                             break;
                         case 402:
-                            song.innerText = String.fromCodePoint('128176');
+                            extraInfo.innerText = String.fromCodePoint('128176');
                             artist.innerText = 'PAYMENT REQUIRED';
                             break;
                         case 429:
-                            song.innerText = String.fromCodePoint('127881');
+                            extraInfo.innerText = String.fromCodePoint('127881');
                             artist.innerText = 'TOO MANY REQUESTS';
                             break;
                         default:
-                            song.innerText = String.fromCodePoint('128165');
+                            extraInfo.innerText = String.fromCodePoint('128165');
                             artist.innerText = 'BROKEN APPLICATION';
                     }
 
-                    extraInfo.innerText = '';
+                    song.innerText = '';
                     updateDialogBackdrop('good-dialog-backdrop', 'error-dialog-backdrop');
                     resultsDialog.showModal();
                 }
@@ -83,8 +83,6 @@ document.addEventListener('DOMContentLoaded', function emosongiApp() {
                     } else {
 
                         console.log('Error');
-                        // TODO REMOVE this log
-                        console.log(error);
                     }
             });
 
@@ -147,5 +145,4 @@ document.addEventListener('DOMContentLoaded', function emosongiApp() {
     formEmojis.addEventListener('submit', emosongi);
 
     resultsDialog.addEventListener('close', cleanEmosongi);
-
 });

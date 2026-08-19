@@ -62,7 +62,7 @@ legend { font-size: 8vmin; }
 
 .error-dialog-backdrop::backdrop {
 
-    background-image: radial-gradient(circle at 50% 20%, red, darkslategray, crimson, black 50%);
+    background-image: radial-gradient(circle at 50% 20%, red, crimson, darkred, black 50%);
 }
 
 .base-dialog {
@@ -109,9 +109,9 @@ legend { font-size: 8vmin; }
     animation-iteration-count: infinite;
 }
 
-.music-recommendation-text {
+.results-dialog-text {
 
-    background-image: linear-gradient(mintcream, orange);
+    background-image: linear-gradient(orange, mintcream 60%);
     color: transparent;
     background-clip: text;
 }
