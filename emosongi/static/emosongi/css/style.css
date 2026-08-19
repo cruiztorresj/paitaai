@@ -17,7 +17,7 @@ label { display: inline-block; }
 
 legend { font-size: 8vmin; }
 
-#btn-close-recommendation-dialog {
+#btn-close-results-dialog {
 
     background-color: darkslategray;
     color: antiquewhite;
@@ -27,7 +27,7 @@ legend { font-size: 8vmin; }
     font-size: medium;
 }
 
-#btn-close-recommendation-dialog:hover {
+#btn-close-results-dialog:hover {
 
     background-color: slategray;
     color: white;
@@ -55,12 +55,12 @@ legend { font-size: 8vmin; }
 
 #hugging { grid-area: hugging; }
 
-#recommendation-dialog::backdrop {
+.good-dialog-backdrop::backdrop {
 
     background-image: radial-gradient(circle at 50% 20%, aqua, slategray, darkslategray, black 50%);
 }
 
-#error-dialog::backdrop {
+.error-dialog-backdrop::backdrop {
 
     background-image: radial-gradient(circle at 50% 20%, red, darkslategray, crimson, black 50%);
 }

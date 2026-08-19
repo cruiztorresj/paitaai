@@ -3,17 +3,16 @@
 document.addEventListener('DOMContentLoaded', function emosongiApp() {
 
     const LOADING_CSS_CLASS = 'emosongi-fieldset-legend-loading';
+    const RESULTS_EMOJIS = '\u{1F3A7} \u{1F3B9} \u{1F941} \u{1F3B8} \u{1FA88}';
 
     const formEmojis = document.getElementById('formEmojis');
     const emojis = document.getElementsByName('my-emotion');
     const secret = document.getElementsByName('csrfmiddlewaretoken')[0].value;
-    const recommendationDialog = document.getElementById('recommendation-dialog');
-    const errorDialog = document.getElementById('error-dialog');
+    const resultsDialog = document.getElementById('results-dialog');
     const emosongiLegend = document.getElementById('emosongi-fieldset-legend');
     const song = document.getElementById('sing-a-song');
     const artist = document.getElementById('artist');
-    const errorEmoji = document.getElementById('error-emoji');
-    const errorMessage = document.getElementById('error-message');
+    const extraInfo = document.getElementById('extra-info');
 
     let controller;
     let isNewEmosongiRequest = true
@@ -47,30 +46,34 @@ document.addEventListener('DOMContentLoaded', function emosongiApp() {
                         const music = JSON.parse(JSON.stringify(data));
 
                         song.innerText = music.song;
+                        extraInfo.innerText = RESULTS_EMOJIS;
                         artist.innerText = music.singer;
-                        recommendationDialog.showModal();
+                        updateDialogBackdrop('error-dialog-backdrop', 'good-dialog-backdrop');
+                        resultsDialog.showModal();
                     });
                 } else {
 
                     switch(response.status) {
                         case 401:
-                            errorEmoji.innerText = String.fromCodePoint('128683');
-                            errorMessage.innerText = 'UNAUTHORIZED';
+                            song.innerText = String.fromCodePoint('128683');
+                            artist.innerText = 'UNAUTHORIZED';
                             break;
                         case 402:
-                            errorEmoji.innerText = String.fromCodePoint('128176');
-                            errorMessage.innerText = 'PAYMENT REQUIRED';
+                            song.innerText = String.fromCodePoint('128176');
+                            artist.innerText = 'PAYMENT REQUIRED';
                             break;
                         case 429:
-                            errorEmoji.innerText = String.fromCodePoint('127881');
-                            errorMessage.innerText = 'TOO MANY REQUESTS';
+                            song.innerText = String.fromCodePoint('127881');
+                            artist.innerText = 'TOO MANY REQUESTS';
                             break;
                         default:
-                            errorEmoji.innerText = String.fromCodePoint('128165');
-                            errorMessage.innerText = 'BROKEN APPLICATION';
+                            song.innerText = String.fromCodePoint('128165');
+                            artist.innerText = 'BROKEN APPLICATION';
                     }
 
-                    errorDialog.showModal();
+                    extraInfo.innerText = '';
+                    updateDialogBackdrop('good-dialog-backdrop', 'error-dialog-backdrop');
+                    resultsDialog.showModal();
                 }
             }).catch(error => {
 
@@ -99,6 +102,12 @@ document.addEventListener('DOMContentLoaded', function emosongiApp() {
         }
 
         event.preventDefault();
+    }
+
+    function updateDialogBackdrop(oldBackdrop, newBackdrop) {
+
+        resultsDialog.classList.remove(oldBackdrop);
+        resultsDialog.classList.add(newBackdrop);
     }
 
     function submitForm(event) {
@@ -137,6 +146,6 @@ document.addEventListener('DOMContentLoaded', function emosongiApp() {
 
     formEmojis.addEventListener('submit', emosongi);
 
-    recommendationDialog.addEventListener('close', cleanEmosongi);
+    resultsDialog.addEventListener('close', cleanEmosongi);
 
 });

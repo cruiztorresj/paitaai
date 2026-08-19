@@ -78,17 +78,11 @@
                     </div>
                 </fieldset>
             </form>
-            <dialog id="recommendation-dialog" class="base-dialog" closedby="any">
-                <p class="music-recommendation-text" id="sing-a-song"></p>
-                <p class="music-recommendation-text" id="artist"></p>
-                <button id="btn-close-recommendation-dialog" commandfor="recommendation-dialog" command="close" autofocus>
-                    Close
-                </button>
-            </dialog>
-            <dialog id="error-dialog" class="base-dialog">
-                <p class="error-text" id="error-emoji"></p>
-                <p class="error-text" id="error-message"></p>
-                <button commandfor="error-dialog" command="close" autofocus>
+            <dialog id="results-dialog" class="base-dialog" closedby="any">
+                <p id="sing-a-song"></p>
+                <p id="extra-info"></p>
+                <p id="artist"></p>
+                <button id="btn-close-results-dialog" commandfor="results-dialog" command="close" autofocus>
                     Close
                 </button>
             </dialog>
