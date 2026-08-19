@@ -2,6 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', function emosongiApp() {
 
+    const LOADING_CSS_CLASS = 'emosongi-fieldset-legend-loading';
+
     const formEmojis = document.getElementById('formEmojis');
     const emojis = document.getElementsByName('my-emotion');
     const secret = document.getElementsByName('csrfmiddlewaretoken')[0].value;
@@ -86,8 +88,7 @@ document.addEventListener('DOMContentLoaded', function emosongiApp() {
         } else {
 
             controller.abort();
-            emosongiLegend.innerText = 'Emosongi';
-            emosongiLegend.classList.remove('emosongi-fieldset-legend-loading');
+            cleanLegend();
             isNewEmosongiRequest = true;
 
             setTimeout(() => {
@@ -108,14 +109,19 @@ document.addEventListener('DOMContentLoaded', function emosongiApp() {
     function giveUserLoadingVisualClue() {
 
         emosongiLegend.innerText = 'Loading...';
-        emosongiLegend.classList.add('emosongi-fieldset-legend-loading');
+        emosongiLegend.classList.add(LOADING_CSS_CLASS);
     }
 
     function cleanEmosongi() {
 
-        emosongiLegend.innerText = 'Emosongi';
-        emosongiLegend.classList.remove('emosongi-fieldset-legend-loading');
+        cleanLegend();
         formEmojis.reset();
+    }
+
+    function cleanLegend() {
+
+        emosongiLegend.innerText = 'Emosongi';
+        emosongiLegend.classList.remove(LOADING_CSS_CLASS);
     }
 
     function resetEmosongiForm() {
