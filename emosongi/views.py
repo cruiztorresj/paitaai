@@ -1,7 +1,10 @@
+from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
 
 from .engine import Engine
+
+import httpx
 
 def index(request):
     return render(request, "emosongi/index.html")
@@ -9,26 +12,26 @@ def index(request):
 def recommend(request):
     emojid = None
     if request.method == 'POST':
-        emojid = request.POST.get('my_emotion')
+        emojid = request.POST.get('my-emotion')
     else:
         return redirect("emosongi:index")
     if emojid is None:
         return redirect("emosongi:index")
 
-    response = Engine.get_song(emojid)
+    feeling = Engine.get_associated_feeling(emojid)
 
-    match response:
-        case '401':
-            return redirect("emosongi:unauthorized")
-        case '429':
-            return redirect("emosongi:exceeded")
-        case '500':
-            return render(request, "emosongi/500.html", status=500)
-        case _:
-            return render(request, "emosongi/recommendation.html", {"emojisong": response})
+    response = JsonResponse({})
 
-def unauthorized(request):
-    return render(request, "emosongi/401_unauthorized.html", status=401)
+    try:
+        response = JsonResponse(Engine.get_song(feeling))
+        return response
 
-def exceeded(request):
-    return render(request, "emosongi/429_many_requests.html", status=429)
+    except httpx.HTTPStatusError as e:
+        match e.response.status_code:
+            case 401:
+                response.status_code = 401
+            case 429:
+                response.status_code = 429
+            case _:
+                response.status_code = 500
+        return response

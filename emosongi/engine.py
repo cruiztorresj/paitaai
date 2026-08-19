@@ -4,8 +4,6 @@ from langchain_core.output_parsers.json import JsonOutputParser
 
 from .music import Songs
 
-import httpx
-
 import random
 
 class Engine:
@@ -33,8 +31,8 @@ class Engine:
             return 'love'
 
     @staticmethod
-    def get_song(emoji_id):
-        # Should be placed elsewhere.
+    def get_song(feeling):
+
         model = init_chat_model("mistral-small-latest",
                                 model_provider="mistralai",
                                 temperature = 0.7,
@@ -50,24 +48,13 @@ class Engine:
             partial_variables=
                 {"format_instructions": parser.get_format_instructions()}
                                       )
-        feeling = Engine.get_associated_feeling(emoji_id)
-
         llm_chain = prompt | model | parser
 
-        try:
-            response = llm_chain.invoke(input = {"emotion": feeling})
+        response = llm_chain.invoke(input = {"emotion": feeling})
 
-            songs = response['recommendations']
-            song = random.choice(songs)
+        songs = response['recommendations']
+        song = random.choice(songs)
 
-            answer = 'I do recommend listening to ' + song['name'] + ' by ' + song['singer']
+        answer = {'song': song['name'],  'singer': song['singer']}
 
-            return answer
-        except httpx.HTTPStatusError as e:
-            match e.response.status_code:
-                case 401:
-                    return '401'
-                case 429:
-                    return '429'
-                case _:
-                    return '500'
+        return answer
